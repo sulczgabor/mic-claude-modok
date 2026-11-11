@@ -1,0 +1,21 @@
+{
+  "name": "mic-modok",
+  "owner": {
+    "name": "MakeItCount"
+  },
+  "metadata": {
+    "description": "A MakeItCount AI Challenge két modja: piaci műszerfal és kulcs-őr"
+  },
+  "plugins": [
+    {
+      "name": "mic-piaci-muszerfal",
+      "source": "./mic-piaci-muszerfal",
+      "description": "Piaci sáv (S&P 500, Nasdaq-100, VIX, BTC), napi gyertyás chart panelben, riasztás és a MIC hangulat-index"
+    },
+    {
+      "name": "mic-kulcs-or",
+      "source": "./mic-kulcs-or",
+      "description": "Kulcs-őr: nem engedi kiolvasni vagy GitHubra küldeni a .env fájlt, és megállítja a kulcsot tartalmazó promptot"
+    }
+  ]
+}

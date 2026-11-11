@@ -1,0 +1,9 @@
+{
+  "name": "mic-piaci-muszerfal",
+  "version": "0.1.0",
+  "description": "MakeItCount piaci műszerfal: S&P 500, Nasdaq-100, VIX és BTC sáv, napi gyertyás chart panelben, riasztás",
+  "types": "./types/index.d.ts",
+  "author": {
+    "name": "MakeItCount"
+  }
+}

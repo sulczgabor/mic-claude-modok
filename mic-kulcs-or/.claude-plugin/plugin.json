@@ -1,0 +1,6 @@
+{
+  "name": "mic-kulcs-or",
+  "version": "0.1.0",
+  "description": "MakeItCount kulcs-őr: nem engedi kiolvasni vagy GitHubra küldeni a .env fájlt, és megállítja a kulcsot tartalmazó promptot",
+  "author": { "name": "MakeItCount" }
+}
