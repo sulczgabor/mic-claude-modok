@@ -358,9 +358,10 @@ export const register: Register = on => {
   on('ui.render', { component: 'Pane', requestId: HANG_PANE }, async ($, e) => {
     const { Box, Button, Text } = $.ui.resolve(e)
     const Svg = ($.ui.resolve(e) as any).Svg
-    const h = await read($, hangulat)
+    // Not `h`: the JSX factory is called h, and a local h would shadow it
+    const hd = await read($, hangulat)
     const err = await read($, hangulatError)
-    if (!h) {
+    if (!hd) {
       return (
         <Box flexDirection="column" gap={1}>
           <Text>{err ?? 'Betöltés…'}</Text>
@@ -370,17 +371,17 @@ export const register: Register = on => {
     }
     return (
       <Box flexDirection="column" gap={1}>
-        <Text dimColor>Utolsó adat: {h.date}. 0 = extrém félelem, 100 = extrém mohóság.</Text>
-        {Svg && <Svg source={gaugeSvg(h.index, h.zone)} alt={`MIC hangulat-index: ${fmt(h.index, 0)}, ${h.zone}`} />}
+        <Text dimColor>Utolsó adat: {hd.date}. 0 = extrém félelem, 100 = extrém mohóság.</Text>
+        {Svg && <Svg source={gaugeSvg(hd.index, hd.zone)} alt={`MIC hangulat-index: ${fmt(hd.index, 0)}, ${hd.zone}`} />}
         <Box flexDirection="column">
-          {Object.entries(h.comps).map(([k, v]) => (
+          {Object.entries(hd.comps).map(([k, v]) => (
             <Text>
               <Text color={zoneColor(v)} tabular>{fmt(v, 0).padStart(3, ' ')}</Text> {COMP_LABELS[k] ?? k}
             </Text>
           ))}
         </Box>
-        {Svg && h.series.length > 1 && (
-          <Svg source={historySvg(h.series)} alt={`A MIC hangulat-index ${h.series[0][0]} óta, a két legmélyebb ponttal`} />
+        {Svg && hd.series.length > 1 && (
+          <Svg source={historySvg(hd.series)} alt={`A MIC hangulat-index ${hd.series[0][0]} óta, a két legmélyebb ponttal`} />
         )}
         <Text dimColor>
           Minden komponens a saját elmúlt 252 kereskedési napjához mért helyezés (percentilis). Ez hangulatmérő, nem jóslat és nem tanács.
