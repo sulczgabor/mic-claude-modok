@@ -18,27 +18,37 @@ Adat kulcs nélkül: a CNBC nyilvános árfolyam- és chart-végpontja, valamint
 - A Claude nem olvashatja, nem írhatja és nem küldheti fel a `.env` fájlt (a `.env.minta` és a `.env.example` kivétel, azokban nincs valódi kulcs).
 - Nem enged olyan parancsot, ami a `.env` tartalmát kiírná vagy elvinné, és nem engedi a `.env` GitHubra küldését.
 - Ha a promptodban kulcsnak látszó szöveg van, a prompt el sem megy, és figyelmeztetést kapsz.
+- Macen, Linuxon és Windowson is működik: a 0.2.0 verzió óta a Windows fordított perjeles útvonalát (`C:\...\.env`), a PowerShellt és a keresőt (Grep) is figyeli, és a `.ENV` írásmódot is felismeri. Ha a 0.1.0 van fent nálad, frissíts (lent).
 
 A kulcs-őr egy plusz biztonsági öv, nem garancia. A szabály marad: kulcsot soha ne írj a chatbe, a `.env` fájlt te töltöd ki, saját kezűleg.
 
 ## Telepítés
 
-**Az asztali appban (Code fül):** kattints a beviteli mező melletti + gombra, válaszd a Plugins menüt, majd az Add marketplace pontot, és add meg ezt: `sulczgabor/mic-claude-modok`. Utána az Add plugin menüben válaszd ki a modot.
+**Az asztali appban (Code fül):** bal oldalt Customize, fent Plugins, jobbra + Add, majd Add from a repository, és add meg ezt: `sulczgabor/mic-claude-modok`. Utána válaszd ki a modot.
 
 **Terminálban, a Claude Code promptjánál:**
 
 ```
-/plugin install mic-piaci-muszerfal --marketplace sulczgabor/mic-claude-modok
-/plugin install mic-kulcs-or --marketplace sulczgabor/mic-claude-modok
+/plugin marketplace add sulczgabor/mic-claude-modok
+/plugin install mic-piaci-muszerfal@mic-modok
+/plugin install mic-kulcs-or@mic-modok
 ```
-
-Első alkalommal megkérdezi, hozzáadja-e a forrást: válaszolj `y`-nal, a hatókörnél maradhat a felajánlott (user).
 
 **Shellből:**
 
 ```
-claude plugin install mic-piaci-muszerfal --marketplace sulczgabor/mic-claude-modok
-claude plugin install mic-kulcs-or --marketplace sulczgabor/mic-claude-modok
+claude plugin marketplace add sulczgabor/mic-claude-modok
+claude plugin install mic-piaci-muszerfal@mic-modok
+claude plugin install mic-kulcs-or@mic-modok
+```
+
+## Frissítés
+
+Shellből (vagy kérd meg a Claude-ot, hogy futtassa le), utána indítsd újra a Claude Code-ot:
+
+```
+claude plugin marketplace update mic-modok
+claude plugin update mic-kulcs-or@mic-modok
 ```
 
 ## Mielőtt bármilyen modot telepítesz
